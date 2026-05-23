@@ -1,0 +1,59 @@
+import { ref, onMounted, watch } from 'vue'
+import { useLocale } from './useLocale'
+
+const API_BASE = 'https://about.luomor.com/about'
+
+export function useWorkExperience() {
+  const { currentLocale } = useLocale()
+  const experiences = ref(null)
+  const grouped = ref({})
+  const loading = ref(true)
+  const error = ref(null)
+
+  async function fetchData() {
+    try {
+      loading.value = true
+      error.value = null
+      const endpoint = currentLocale.value === 'en'
+        ? `${API_BASE}/workExperienceEn`
+        : `${API_BASE}/workExperience`
+
+      const res = await fetch(endpoint)
+      const json = await res.json()
+
+      if (json.code === 200) {
+        experiences.value = json.result.work_experiences
+        grouped.value = groupByTag(experiences.value)
+      }
+    } catch (e) {
+      error.value = e
+    } finally {
+      loading.value = false
+    }
+  }
+
+  function groupByTag(items) {
+    const tagOrder = []
+    const tagMap = {}
+
+    for (const item of items) {
+      const tag = item.tag
+      if (!tagMap[tag]) {
+        tagOrder.push(tag)
+        tagMap[tag] = []
+      }
+      tagMap[tag].push(item)
+    }
+
+    const groups = {}
+    for (let i = 0; i < tagOrder.length; i++) {
+      groups[`${i + 1}_${tagOrder[i]}`] = tagMap[tagOrder[i]]
+    }
+    return groups
+  }
+
+  onMounted(fetchData)
+  watch(currentLocale, fetchData)
+
+  return { experiences, grouped, loading, error, fetch: fetchData }
+}

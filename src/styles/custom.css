@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Base styles ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  margin-top: 40px;
+}
+
+.section {
+  border-bottom: 2px dashed #999;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ---- Navbar ---- */
+.navbar-custom {
+  background-color: #333;
+}
+
+/* ---- Introduction ---- */
+#introduction {
+  background: url('/images/grunge-bg-2.png');
+  padding: 25px 0 5px 0;
+  text-align: center;
+}
+
+/* ---- Technology ---- */
+#technology .info-badge {
+  text-align: center;
+  font-size: 30px;
+  padding: 10px;
+  margin: auto;
+  width: 200px;
+  height: 70px;
+  background: rgba(120, 120, 120, 0.6);
+  color: #FFFFFF;
+  line-height: 70px;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+#technology .skill-section-two {
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+#technology p {
+  font-size: 13px;
+  text-shadow: 0px 1px 0px #FFFFFF;
+  color: #0D9AA1;
+}
+
+/* ---- Timeline ---- */
+.timeline-column-body li {
+  background: #EDEFF4;
+  border: 1px solid #D2D9E7;
+  list-style: none;
+  padding: 5px 13px;
+  margin: 2px 4px 0px;
+}
+
+.timeline-column-body .project-button:hover {
+  background: #909090;
+}
+
+.timeline-column-body .project-button {
+  background: #EDEFF4;
+  margin-left: 20px;
+  padding: 5px;
+  text-align: center;
+  width: 40px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.timeline-column-body .project-content {
+  display: none;
+}
+
+/* ---- Social Icons ---- */
+#social-icons li {
+  list-style: none;
+  border-radius: 100px;
+  display: inline-block;
+}
+
+#social-icons li a {
+  display: block;
+  width: 35px;
+  height: 35px;
+  text-indent: -9999px;
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+}
+
+.weibo {
+  background-image: url('/images/weibo72x72.png');
+}
+
+.linkedIn {
+  background-image: url('/images/linked-in.png');
+}
+
+.renren {
+  background-image: url('/images/renren.png');
+}
+
+.facebook {
+  background-image: url('/images/facebook.png');
+}
+
+.github {
+  background-image: url('/images/Octocat/Octocat_compress.png');
+}
+
+/* ---- Timeline Layout ---- */
+.timeline-tag {
+  padding-left: 20px;
+}
+
+.pos-left {
+  float: left;
+  clear: left;
+  width: 45%;
+  margin-left: 5%;
+}
+
+.pos-right {
+  float: right;
+  clear: right;
+  width: 45%;
+  margin-right: 5%;
+}
+
+@media (max-width: 600px) {
+  .pos-left, .pos-right {
+    float: none;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+/* ---- Project Toggle ---- */
+.project-toggle {
+  background: #EDEFF4;
+  margin-left: 20px;
+  padding: 5px;
+  text-align: center;
+  width: 40px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.project-toggle:hover {
+  background: #909090;
+  color: white;
+}
+
+/* ---- Earth Container ---- */
+.earth-container {
+  position: relative;
+}
+
+.earth-container canvas {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* ---- Skill Diagram Animations ---- */
+@keyframes div_rotate {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(36deg); }
+  20% { transform: rotate(72deg); }
+  30% { transform: rotate(108deg); }
+  40% { transform: rotate(144deg); }
+  50% { transform: rotate(180deg); }
+  60% { transform: rotate(216deg); }
+  70% { transform: rotate(252deg); }
+  80% { transform: rotate(288deg); }
+  90% { transform: rotate(324deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes div_java_php_skill {
+  0% { top: 80px; left: 70px; transform: rotate(0deg); }
+  25% { top: 60px; left: 70px; transform: rotate(36deg); }
+  50% { top: 40px; left: 70px; transform: rotate(72deg); }
+  75% { top: 20px; left: 70px; transform: rotate(108deg); }
+  100% { top: 0px; left: 70px; transform: rotate(180deg); }
+}
+
+@keyframes div_html5_css3_skill {
+  0% { top: 85px; left: 65px; transform: rotate(0deg); }
+  25% { top: 80px; left: 39px; transform: rotate(36deg); }
+  50% { top: 75px; left: 13px; transform: rotate(72deg); }
+  75% { top: 70px; left: -13px; transform: rotate(108deg); }
+  100% { top: 65px; left: -40px; transform: rotate(120deg); }
+}
+
+@keyframes div_js_jquery_skill {
+  0% { top: 85px; left: 75px; transform: rotate(0deg); }
+  25% { top: 80px; left: 101px; transform: rotate(-36deg); }
+  50% { top: 75px; left: 127px; transform: rotate(-72deg); }
+  75% { top: 70px; left: 153px; transform: rotate(-108deg); }
+  100% { top: 65px; left: 180px; transform: rotate(-120deg); }
+}
+
+@keyframes div_mysql_oracle_skill {
+  0% { top: 95px; left: 65px; transform: rotate(0deg); }
+  25% { top: 120px; left: 39px; transform: rotate(20deg); }
+  50% { top: 145px; left: 13px; transform: rotate(30deg); }
+  75% { top: 170px; left: -13px; transform: rotate(40deg); }
+  100% { top: 195px; left: -40px; transform: rotate(60deg); }
+}
+
+@keyframes div_nosql_skill {
+  0% { top: 95px; left: 75px; transform: rotate(0deg); }
+  25% { top: 120px; left: 101px; transform: rotate(-20deg); }
+  50% { top: 145px; left: 127px; transform: rotate(-30deg); }
+  75% { top: 170px; left: 153px; transform: rotate(-40deg); }
+  100% { top: 195px; left: 180px; transform: rotate(-60deg); }
+}
+
+@keyframes div_hbase_thrift_skill {
+  0% { top: 100px; left: 70px; transform: rotate(180deg); }
+  25% { top: 140px; left: 70px; transform: rotate(108deg); }
+  50% { top: 180px; left: 70px; transform: rotate(72deg); }
+  75% { top: 220px; left: 70px; transform: rotate(36deg); }
+  100% { top: 260px; left: 70px; transform: rotate(0deg); }
+}

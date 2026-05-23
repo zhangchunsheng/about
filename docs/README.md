@@ -5,6 +5,7 @@ claude
 更新 README.md
 优化aboutMe.html和aboutMeEn.html页面seo
 将aboutMe.html和aboutMeEn.html页面重构为Vue+Vite架构，使用TailwindCSS
+更新.gitignore
 ```
 
 ```

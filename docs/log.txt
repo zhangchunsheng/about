@@ -1,0 +1,97 @@
+● Let me do a final rebuild.
+
+● Bash(npm run build 2>&1)
+  ⎿  > about@2.0.0 build
+     > vite build
+     … +10 lines (ctrl+o to expand)
+  ⎿  (timeout 2m)
+
+● All phases complete. Here's a summary of the refactoring:
+
+  What was done
+
+  Migrated from jQuery/Bootstrap/Bootflat to Vue 3 + Vite + TailwindCSS
+
+  New project structure
+
+  - package.json - Vue 3, Vue Router 4, Vite 6, TailwindCSS 3
+  - vite.config.js - Vite build configuration
+  - tailwind.config.js - Custom brand colors, fonts, animations
+  - src/ - All Vue components and composables
+
+  Components created
+
+  - TheNavbar.vue - Fixed navbar with language toggle, mobile hamburger menu
+  - IntroductionSection.vue - Name, bio, social links, heart + earth canvas animations
+  - SkillDiagram.vue - Animated 6-triangle rotating diagram
+  - TechnologySection.vue - 14 skill category descriptions
+  - WorkSection.vue / TimelineItem.vue - Timeline with fetch-based data loading
+  - QrCodeSection.vue / StatementSection.vue / BackToTop.vue
+  - ResumePage.vue - Master page combining all sections
+
+  Key changes
+
+  - Routing: /zh (Chinese) and /en (English) via Vue Router
+  - Data: fetch() replaces JSONP for work experience API
+  - i18n: JS locale modules replace .properties files
+  - Canvas: useHeart.js and useEarth.js composables (ported from jQuery plugins)
+  - Tracking: Google AdSense, Google Analytics, Baidu Analytics injected in App.vue
+  - Build: vite build outputs to dist/ for GitHub Pages deployment
+
+  Commands
+
+  npm run dev      # Development server
+  npm run build    # Production build → dist/
+  npm run preview  # Preview production build
+
+  Files preserved in repo
+
+  - Original aboutMe.html, aboutMeEn.html, css/, js/ etc. remain (can be deleted after confirming the new site works on
+  GitHub Pages)
+
+✻ Brewed for 16m 59s
+
+更新.gitignore
+
+  Read 1 file (ctrl+o to expand)
+
+● 当前已有 .idea、*.DS_Store、node_modules、dist。补充 Vite/Vue 项目常见的忽略项：
+
+● Write(.gitignore)
+  ⎿  Added 30 lines, removed 2 lines
+       1 -.idea
+       2 -*.DS_Store
+       1 +# Dependencies
+       2  node_modules
+       3 +
+       4 +# Build output
+       5  dist
+       6 +
+       7 +# IDE
+       8 +.idea
+       9 +.vscode
+      10 +*.swp
+      11 +*.swo
+      12 +
+      13 +# OS
+      14 +*.DS_Store
+      15 +Thumbs.db
+      16 +
+      17 +# Logs
+      18 +*.log
+      19 +npm-debug.log*
+      20 +
+      21 +# Environment
+      22 +.env
+      23 +.env.local
+      24 +.env.*.local
+      25 +
+      26 +# Package manager locks (keep package-lock.json committed, ignore yarn/pnpm)
+      27 +yarn.lock
+      28 +pnpm-lock.yaml
+      29 +
+      30 +# Temporary
+      31 +*.tmp
+      32 +*.temp
+
+● 已更新，补充了 .vscode、交换文件、日志、环境变量、yarn/pnpm lock 等常见忽略项。
