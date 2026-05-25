@@ -38,10 +38,9 @@ export function useWorkExperience() {
     const tagOrder = []
     const tagMap = {}
 
-    // Reverse the array so newest (by work_experience_id) renders first
-    const reversed = [...items].reverse()
-
-    for (const item of reversed) {
+    // Iterate from last to first (newest experience first)
+    for (let i = items.length - 1; i >= 0; i--) {
+      const item = items[i]
       const tag = item.tag
       if (!tagMap[tag]) {
         tagOrder.push(tag)
@@ -49,9 +48,6 @@ export function useWorkExperience() {
       }
       tagMap[tag].push(item)
     }
-
-    // Reverse tag order too (newest company first)
-    tagOrder.reverse()
 
     const groups = {}
     for (let i = 0; i < tagOrder.length; i++) {

@@ -174,3 +174,5 @@
 
 ● Done. groupByTag 将 work_experiences 数组先反转，再按 tag 分组，tag 顺序也反转。这样最新的数据（work_experience_id
   最大）最先渲染。
+
+● Done. 现在 groupByTag 从数组末尾往前遍历，最后一个（最新）的工作经历最先渲染。
