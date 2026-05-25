@@ -151,3 +151,8 @@
 
   custom.css — Added slide transition for smooth expand/collapse animation, and updated .project-toggle styling
   (smaller, no margin-top, arrow rotation via .rotate-90 class).
+
+● Done. Changes:
+
+  - kv 显示 — name 和 value 合并到一个 span，用冒号分隔（如 技术栈: Vue 3）
+  - 收起按钮 — 放在项目名下方，独立一行，不再是右侧对齐
