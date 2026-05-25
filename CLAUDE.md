@@ -6,7 +6,7 @@
 
 张春生的个人简历网站，全栈软件工程师。使用 Vue 3 + Vite + TailwindCSS 构建，通过 GitHub Actions 自动部署到 GitHub Pages。
 
-**网站**: https://about.luomor.com  
+**网站**: https://resume.luomor.com
 **技术栈**: Vue 3, Vue Router 4, Vite 6, TailwindCSS 3
 
 ## 项目结构

@@ -4,7 +4,7 @@
 
 ## 在线访问
 
-[https://about.luomor.com](https://about.luomor.com)
+[https://resume.luomor.com](https://resume.luomor.com)
 
 ## 技术栈
 
