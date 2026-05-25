@@ -298,16 +298,15 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 4px;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: 11px;
   font-family: 'IBM Plex Mono', monospace;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 12px;
 }
 
 .project-toggle:hover {
@@ -319,10 +318,37 @@ body {
 .project-toggle .arrow {
   transition: transform 0.3s ease;
   font-size: 10px;
+  display: inline-block;
 }
 
-.project-toggle.active .arrow {
+.project-toggle .arrow.rotate-90 {
   transform: rotate(90deg);
+}
+
+/* Slide transition */
+.slide-enter-active {
+  transition: all 0.3s ease-out;
+  overflow: hidden;
+}
+.slide-leave-active {
+  transition: all 0.2s ease-in;
+  overflow: hidden;
+}
+.slide-enter-from {
+  opacity: 0;
+  max-height: 0;
+}
+.slide-enter-to {
+  opacity: 1;
+  max-height: 500px;
+}
+.slide-leave-from {
+  opacity: 1;
+  max-height: 500px;
+}
+.slide-leave-to {
+  opacity: 0;
+  max-height: 0;
 }
 
 /* ---- Skill badges ---- */

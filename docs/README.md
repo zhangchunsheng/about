@@ -21,6 +21,7 @@ image /images/qrcode2_new.png 背景需要改为浅色
 a tag text need wraptext
 公司信息和项目信息在一个card里导致card高度增加，需要调整为项目使用独立的card
 项目card的width错误
+项目信息默认折叠，只保留项目名，点击展开后显示完整信息
 ```
 
 ```shell

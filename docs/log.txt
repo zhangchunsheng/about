@@ -142,3 +142,12 @@
 
   Now each item (company or project) gets its own left/right padding class at the same DOM level, eliminating the
   compounded padding that caused the width issue.
+
+● Done. Changes:
+
+  ProjectItem.vue — Default collapsed (expanded = ref(false)). Header with project name + PROJECT tag always visible,
+  with an expand/collapse button on the right. Details (time + kv list) hidden until expanded. Toggle button shows
+  "展开/收起" with arrow rotation.
+
+  custom.css — Added slide transition for smooth expand/collapse animation, and updated .project-toggle styling
+  (smaller, no margin-top, arrow rotation via .rotate-90 class).
