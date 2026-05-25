@@ -18,6 +18,7 @@ Uncaught TypeError: Cannot read properties of undefined (reading 'forEach')
 npm run dev用了30秒，且没有热加载
 重构页面UI
 image /images/qrcode2_new.png 背景需要改为浅色
+a tag text need wraptext
 ```
 
 ```shell

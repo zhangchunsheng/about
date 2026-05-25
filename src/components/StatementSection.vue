@@ -10,7 +10,7 @@
       </div>
       <ul class="flex justify-center">
         <li>
-          <a href="http://www.facebook.com" class="font-mono text-sm text-[var(--accent)] hover:underline">
+          <a href="http://www.facebook.com" class="font-mono text-sm text-[var(--accent)] hover:underline break-all">
             http://www.facebook.com
           </a>
         </li>

@@ -94,9 +94,9 @@ function formatValue(value) {
     const blankIndex = value.indexOf(' ')
     if (blankIndex > 0) {
       const url = value.substring(0, blankIndex)
-      return `<a href="${url}" class="text-[var(--accent)] hover:underline">${url}</a>${value.substring(blankIndex)}`
+      return `<a href="${url}" class="text-[var(--accent)] hover:underline break-all">${url}</a>${value.substring(blankIndex)}`
     }
-    return `<a href="${value}" class="text-[var(--accent)] hover:underline">${value}</a>`
+    return `<a href="${value}" class="text-[var(--accent)] hover:underline break-all">${value}</a>`
   }
   return value
 }
