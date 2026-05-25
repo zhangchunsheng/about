@@ -32,6 +32,7 @@ timeline使用work_experience_id倒序排列，理论上work_experiences数组�
 timeline使用work_experiences数组从后往前循环，数组中最后一个元素为最新的工作经历
 编写github action，自动部署项目到github pages
 更新claude.md和readme.md
+直接访问/zh页面空白，需要支持/zh直接访问
 ```
 
 ```shell
