@@ -163,3 +163,11 @@
    北京），移除了之前的两列布局。
 
   ProjectItem.vue — 展开按钮添加了 mt-4，与项目名之间有间距。
+
+● Done.
+
+  useWorkExperience.js — 数据按时间倒序排列：tag 组按名称降序，组内每条经历按 start_time 年份降序，最新经历在最上面。
+
+  WorkSection.vue — timeline-tag 距 dot 增加 mt-10 间距。
+
+● Done. .timeline-tag 增加了 padding-top: 10px。

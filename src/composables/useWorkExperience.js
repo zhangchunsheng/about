@@ -47,11 +47,24 @@ export function useWorkExperience() {
       tagMap[tag].push(item)
     }
 
+    // Sort items within each group by start_time descending
+    for (const tag of tagOrder) {
+      tagMap[tag].sort((a, b) => parseYear(b.start_time) - parseYear(a.start_time))
+    }
+
+    // Sort groups by tag name descending (newest company first)
+    tagOrder.sort((a, b) => b.localeCompare(a))
+
     const groups = {}
     for (let i = 0; i < tagOrder.length; i++) {
       groups[`${i + 1}_${tagOrder[i]}`] = tagMap[tagOrder[i]]
     }
     return groups
+  }
+
+  function parseYear(time) {
+    if (!time) return 0
+    return parseInt(time.replace(/\D/g, '').substring(0, 4), 10) || 0
   }
 
   onMounted(fetchData)

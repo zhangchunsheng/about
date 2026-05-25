@@ -283,6 +283,7 @@ body {
 .timeline-tag {
   display: inline-block;
   padding: 4px 12px;
+  padding-top: 10px;
   border-radius: 4px;
   background: var(--accent-glow);
   color: var(--accent);

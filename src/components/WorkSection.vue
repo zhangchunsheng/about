@@ -29,7 +29,7 @@
             <!-- Tag -->
             <div class="relative mb-12 animate-on-scroll">
               <div class="timeline-dot" style="top: 0;"></div>
-              <div class="text-center">
+              <div class="text-center mt-6">
                 <span class="timeline-tag">{{ getTag(key) }}</span>
               </div>
             </div>
