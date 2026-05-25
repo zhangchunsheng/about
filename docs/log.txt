@@ -176,3 +176,13 @@
   最大）最先渲染。
 
 ● Done. 现在 groupByTag 从数组末尾往前遍历，最后一个（最新）的工作经历最先渲染。
+
+● Done.
+
+  创建了 .github/workflows/deploy.yml，推送到 master 分支后自动构建并部署到 GitHub Pages：
+
+  - 触发：push 到 master 或手动 workflow_dispatch
+  - 流程：npm ci → npm run build → 上传 dist/ → 部署
+  - 输出：自动设置 GitHub Pages 环境 URL
+
+  首次使用需在仓库 Settings → Pages → Source 选择 GitHub Actions。
