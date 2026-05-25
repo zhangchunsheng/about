@@ -19,6 +19,8 @@ npm run dev用了30秒，且没有热加载
 重构页面UI
 image /images/qrcode2_new.png 背景需要改为浅色
 a tag text need wraptext
+公司信息和项目信息在一个card里导致card高度增加，需要调整为项目使用独立的card
+项目card的width错误
 ```
 
 ```shell
