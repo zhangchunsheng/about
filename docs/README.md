@@ -6,9 +6,18 @@ claude
 优化aboutMe.html和aboutMeEn.html页面seo
 将aboutMe.html和aboutMeEn.html页面重构为Vue+Vite架构，使用TailwindCSS
 更新.gitignore
+Uncaught TypeError: Cannot read properties of undefined (reading 'forEach')
+    at createRouterMatcher (vue-router.js?v=a15bd620:1661:10)
+    at createRouter (vue-router.js?v=a15bd620:1989:19)
+    at index.js:22:16
+
+Uncaught TypeError: Cannot read properties of undefined (reading 'forEach')
+    at createRouterMatcher (vue-router.js?v=a15bd620:1661:10)
+    at createRouter (vue-router.js?v=a15bd620:1989:19)
+    at index.js:22:16
 ```
 
-```
+```shell
 curl -fsSL https://gitee.com/CoderRouter/scripts/raw/master/install_claude.sh | sed 's/\r$//' | sh
 npm uninstall -g @anthropic-ai/claude-code
 npm install -g @anthropic-ai/claude-code
