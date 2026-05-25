@@ -9,7 +9,7 @@
           {{ project.project_name }}
         </h5>
       </div>
-      <button class="project-toggle mb-3" @click="expanded = !expanded">
+      <button class="project-toggle mt-4 mb-3" @click="expanded = !expanded">
         <span>{{ expanded ? (isZh ? '收起' : 'Collapse') : (isZh ? '展开' : 'Expand') }}</span>
         <span class="arrow" :class="{ 'rotate-90': expanded }">▸</span>
       </button>

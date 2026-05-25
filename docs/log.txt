@@ -156,3 +156,10 @@
 
   - kv 显示 — name 和 value 合并到一个 span，用冒号分隔（如 技术栈: Vue 3）
   - 收起按钮 — 放在项目名下方，独立一行，不再是右侧对齐
+
+● Done.
+
+  TimelineItem.vue — address、job_title、responsibility、ext 全部合并为单个 span，name 和 value 之间用冒号分隔（如 地点:
+   北京），移除了之前的两列布局。
+
+  ProjectItem.vue — 展开按钮添加了 mt-4，与项目名之间有间距。

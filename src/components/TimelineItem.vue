@@ -20,21 +20,17 @@
 
       <!-- Meta -->
       <ul class="space-y-2 text-sm">
-        <li v-if="experience.address" class="flex items-start gap-2">
-          <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ isZh ? '地点' : 'LOC' }}</span>
-          <span class="text-[var(--text-secondary)]">{{ experience.address }}</span>
+        <li v-if="experience.address">
+          <span class="text-[var(--text-secondary)]">{{ isZh ? '地点' : 'LOC' }}: {{ experience.address }}</span>
         </li>
-        <li v-if="experience.job_title" class="flex items-start gap-2">
-          <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ isZh ? '职位' : 'ROLE' }}</span>
-          <span class="text-[var(--text-secondary)]">{{ experience.job_title }}</span>
+        <li v-if="experience.job_title">
+          <span class="text-[var(--text-secondary)]">{{ isZh ? '职位' : 'ROLE' }}: {{ experience.job_title }}</span>
         </li>
-        <li v-if="experience.responsibility" class="flex items-start gap-2">
-          <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ isZh ? '职责' : 'RESP' }}</span>
-          <span class="text-[var(--text-secondary)]">{{ experience.responsibility }}</span>
+        <li v-if="experience.responsibility">
+          <span class="text-[var(--text-secondary)]">{{ isZh ? '职责' : 'RESP' }}: {{ experience.responsibility }}</span>
         </li>
-        <li v-for="(ext, idx) in experience.ext" :key="idx" class="flex items-start gap-2">
-          <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ ext.name }}</span>
-          <span class="text-[var(--text-secondary)]" v-html="formatValue(ext.value)"></span>
+        <li v-for="(ext, idx) in experience.ext" :key="idx">
+          <span class="text-[var(--text-secondary)] break-all" v-html="formatExt(ext)"></span>
         </li>
       </ul>
     </div>
@@ -50,16 +46,15 @@ const props = defineProps({
   parentIndex: { type: Number, default: 0 },
 })
 
-function formatValue(value) {
-  if (!value) return ''
-  if (value.indexOf('http') === 0) {
-    const blankIndex = value.indexOf(' ')
-    if (blankIndex > 0) {
-      const url = value.substring(0, blankIndex)
-      return `<a href="${url}" class="text-[var(--accent)] hover:underline break-all">${url}</a>${value.substring(blankIndex)}`
-    }
-    return `<a href="${value}" class="text-[var(--accent)] hover:underline break-all">${value}</a>`
+function formatExt(ext) {
+  const label = `${ext.name}: ${ext.value || ''}`
+  const urlMatch = label.match(/(https?:\/\/\S+)/)
+  if (urlMatch) {
+    const url = urlMatch[1]
+    const before = label.substring(0, label.indexOf(url))
+    const after = label.substring(label.indexOf(url) + url.length)
+    return `${before}<a href="${url}" class="text-[var(--accent)] hover:underline break-all">${url}</a>${after}`
   }
-  return value
+  return label
 }
 </script>

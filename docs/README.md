@@ -23,6 +23,7 @@ a tag text need wraptext
 项目card的width错误
 项目信息默认折叠，只保留项目名，点击展开后显示完整信息，展开后点击收起，收起后只显示项目名
 项目的kv数据name和value使用同一个span标签显示，name和value之间用冒号分隔，收起按钮放在项目名下方
+公司的kv数据name和value使用同一个span标签显示，name和value之间用冒号分隔，项目card的展开按钮设置margin-top不要离太近
 ```
 
 ```shell
