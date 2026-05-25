@@ -33,6 +33,7 @@ timeline使用work_experiences数组从后往前循环，数组中最后一个�
 编写github action，自动部署项目到github pages
 更新claude.md和readme.md
 直接访问/zh页面空白，需要支持/zh直接访问
+直接访问/zh不要出现404错误，请更改router配置，使/zh能显示
 ```
 
 ```shell

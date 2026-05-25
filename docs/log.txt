@@ -208,3 +208,19 @@
 
   原理：GitHub Pages 对 SPA 的 404 处理会保留原始 URL（如 /zh）但返回 404.html 的内容。现在 404.html 与 index.html
   完全相同，包含正确的哈希资源引用，Vue Router 可以直接处理 /zh 路由，无需任何重定向。
+
+● GitHub Pages 已经在 /zh 返回了正确的 HTML 内容。HTTP 404 状态码可能影响某些浏览器和 SEO。让我检查一下 JS
+  资源是否加载正常，确保 Vue Router 能正常处理 /zh 路由。
+
+  Read 1 file (ctrl+o to expand)
+
+● Bash(curl -s -o /dev/null -w "%{http_code}" "https://resume.luomor.com/assets/index-DaxoTEvs.js" && echo " JS OK"
+      curl -s -o /dev/null -w "%{http_code}" "https://res…)
+  ⎿  200 JS OK
+     200 CSS OK
+
+● HTML 内容和 JS/CSS 资源都正常。GitHub Pages 在 /zh 返回 404 状态码但 SPA 内容正确，Vue Router
+  会处理路由。页面应该能正常显示了。
+
+  404 状态码是 GitHub Pages SPA 的固有限制，不影响页面渲染。如果需要在控制台不出现 404，可以考虑改用 hash
+  模式。需要改吗？
