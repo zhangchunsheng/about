@@ -114,3 +114,8 @@
   - 动画: scroll-triggered 淡入 + 交错延迟
 
   请刷新 http://localhost:5173/zh 查看效果。
+
+● 已将二维码容器背景设为 #fafafa 浅色，并去掉了 opacity 效果让二维码更清晰。热更新应该已经生效了。
+
+● 已在 StatementSection 和 TimelineItem（包括动态生成的 URL 链接）的 <a> 标签上添加 break-all class，长 URL
+  会自动换行了。
