@@ -193,3 +193,18 @@
   分支自动构建。
 
   CLAUDE.md — 完整重写，反映当前项目结构：Vue Router、composables、组件、Canvas 动画、CI/CD 流程、数据排序逻辑等。
+
+● Now dist/404.html is identical to dist/index.html with the correct hashed asset references. GitHub Pages will serve
+  404.html for any unknown path (like /zh) while keeping the URL intact, so Vue Router handles the route directly.
+
+  Let me also clean up the stale public/404.html since it's no longer needed.
+
+● Bash(rm /mnt/d/dev/luomor/about/public/404.html)
+  ⎿  Done
+
+● Done.
+
+  vite.config.js — 添加了 closeBundle 钩子，构建完成后将 dist/index.html 复制为 dist/404.html。
+
+  原理：GitHub Pages 对 SPA 的 404 处理会保留原始 URL（如 /zh）但返回 404.html 的内容。现在 404.html 与 index.html
+  完全相同，包含正确的哈希资源引用，Vue Router 可以直接处理 /zh 路由，无需任何重定向。
