@@ -16,7 +16,7 @@ export default {
   nav_work: 'work',
   nav_statement: 'statement',
   nav_resume: 'resume',
-  strapline: "Birthplace: Xuzhou Jiangsu. I'm an architect, a full-stack engineer, Java & PHP senior software engineer, The author of PHP-Wechaty. I have a habit of writing code. Developed GoLang, Python, Lua, Nodejs, Objective-C, etc. I like to study and research on new technology: Cloud Native App, K8S, TensorFlow, AI, metaverse, bigdata, Self-Driving Car, Grpc, Protobuf, Spring Cloud, Swoole, Html5, GoLang, WebGL, Nodejs, Nosql, Redis, Hbase, Thriff. I think technology should be combined with art. Can't find a job, find a way to make money.",
+  strapline: "Hometown: Xuzhou, Jiangsu Province; Architect, Full-Stack Engineer, Senior Java & PHP Software Engineer, Author of PHP-Wechaty, Code Cleanser; Developed in Golang, Python, Lua, Node.js, Objective-C, etc.; Enjoys learning and researching new technologies: Cloud Native, Kubernetes, TensorFlow, AI, Metaverse, Big Data, Self-Driving Car, Grpc, Protobuf, Spring Cloud, Swoole, HTML5, GoLang, WebGL, Node.js, NoSQL, Redis, HBase, Thriff; Technology should be combined with art; If you can't find a job, find a way to make money.",
   env_message: 'Please love the environment, saving paper',
   skill_info: 'technology to change the future',
   core_skills: 'tech',
