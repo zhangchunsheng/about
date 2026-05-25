@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-[#f1f2f6] font-sans text-[#333] text-[11px] leading-[1.28]">
+  <div class="min-h-screen font-body text-[var(--text-primary)] text-sm leading-relaxed overflow-x-hidden">
+    <div class="noise-overlay"></div>
     <TheNavbar />
     <router-view />
     <BackToTop />
@@ -12,14 +13,12 @@ import TheNavbar from './components/TheNavbar.vue'
 import BackToTop from './components/BackToTop.vue'
 
 onMounted(() => {
-  // Google AdSense
   const adsense = document.createElement('script')
   adsense.async = true
   adsense.crossOrigin = 'anonymous'
   adsense.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6096731848877113'
   document.head.appendChild(adsense)
 
-  // Google Analytics (legacy)
   const gaqCode = `var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-31588662-3']);
 _gaq.push(['_trackPageview']);
@@ -32,7 +31,6 @@ _gaq.push(['_trackPageview']);
   gaScript.textContent = gaqCode
   document.head.appendChild(gaScript)
 
-  // Baidu Analytics
   const baiduCode = `var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");

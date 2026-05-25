@@ -1,54 +1,72 @@
 <template>
-  <dd :class="['timeline-item clearfix relative mb-6', positionClass]">
-    <div class="circ absolute w-4 h-4 rounded-full bg-brand-blue border-2 border-white z-10 -left-2 top-2"></div>
-    <div class="time text-xs text-gray-500 mb-1 ml-4">{{ experience.start_time }}</div>
-    <div class="timeline-column ml-4">
-      <div class="timeline-column-body">
-        <h4 class="timeline-column-heading font-bold text-base mb-2">{{ experience.title }}</h4>
+  <div :class="[
+    'relative mb-12 animate-on-scroll',
+    index % 2 === 0 ? 'timeline-item-left' : 'timeline-item-right'
+  ]">
+    <div class="timeline-dot"></div>
+    <div class="timeline-card">
+      <!-- Time -->
+      <div class="font-mono text-[11px] text-[var(--text-muted)] tracking-wider mb-3">
+        {{ experience.start_time }} — {{ experience.end_time }}
+      </div>
 
-        <div>
-          <p v-if="experience.desc" class="mb-2" v-html="experience.desc"></p>
-          <ul class="space-y-1">
-            <li>{{ t.time }}{{ t.colon }}{{ experience.start_time }} - {{ experience.end_time }}</li>
-            <li v-if="experience.address">{{ t.address }}{{ t.colon }}{{ experience.address }}</li>
-            <li v-if="experience.job_title">{{ t.job_title }}{{ t.colon }}{{ experience.job_title }}</li>
-            <li v-if="experience.responsibility">{{ t.responsibility }}{{ t.colon }}{{ experience.responsibility }}</li>
-            <li v-for="(ext, idx) in experience.ext" :key="idx">
-              {{ ext.name }}{{ t.colon }}<span v-html="formatValue(ext.value)"></span>
+      <!-- Title -->
+      <h4 class="font-display text-lg font-bold text-[var(--text-primary)] mb-2">
+        {{ experience.title }}
+      </h4>
+
+      <!-- Description -->
+      <p v-if="experience.desc" class="text-[var(--text-secondary)] text-sm mb-4 leading-relaxed" v-html="experience.desc"></p>
+
+      <!-- Meta -->
+      <ul class="space-y-2 text-sm">
+        <li v-if="experience.address" class="flex items-start gap-2">
+          <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ isZh ? '地点' : 'LOC' }}</span>
+          <span class="text-[var(--text-secondary)]">{{ experience.address }}</span>
+        </li>
+        <li v-if="experience.job_title" class="flex items-start gap-2">
+          <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ isZh ? '职位' : 'ROLE' }}</span>
+          <span class="text-[var(--text-secondary)]">{{ experience.job_title }}</span>
+        </li>
+        <li v-if="experience.responsibility" class="flex items-start gap-2">
+          <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ isZh ? '职责' : 'RESP' }}</span>
+          <span class="text-[var(--text-secondary)]">{{ experience.responsibility }}</span>
+        </li>
+        <li v-for="(ext, idx) in experience.ext" :key="idx" class="flex items-start gap-2">
+          <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ ext.name }}</span>
+          <span class="text-[var(--text-secondary)]" v-html="formatValue(ext.value)"></span>
+        </li>
+      </ul>
+
+      <!-- Projects -->
+      <div v-for="project in experience.projects" :key="project.project_id" class="mt-4 pt-4 border-t border-[var(--border)]">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-2 h-2 rounded-full bg-[var(--accent)] opacity-60"></div>
+          <h5 class="font-mono text-xs text-[var(--text-primary)] font-medium">
+            {{ project.project_name }}
+          </h5>
+        </div>
+
+        <div class="project-toggle" @click="toggleProject(project.project_id)" :class="{ active: expandedProjects[project.project_id] }">
+          <span class="arrow">›</span>
+          {{ expandedProjects[project.project_id] ? t.hide : t.show }}
+        </div>
+
+        <div v-show="expandedProjects[project.project_id]" class="mt-3 ml-2 pl-3 border-l border-[var(--border)]">
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start gap-2">
+              <span class="font-mono text-[11px] text-[var(--text-muted)] shrink-0 mt-0.5">{{ isZh ? '时间' : 'TIME' }}</span>
+              <span class="text-[var(--text-secondary)]">{{ project.start_time }} — {{ project.end_time }}</span>
+            </li>
+            <li v-for="(kv, idx) in project.kv" :key="idx" class="flex items-start gap-2">
+              <span class="font-mono text-[11px] text-[var(--accent)] shrink-0 mt-0.5">{{ kv.name }}</span>
+              <span class="text-[var(--text-secondary)]" v-html="formatValue(kv.value)"></span>
             </li>
           </ul>
         </div>
-
-        <!-- Projects -->
-        <div v-for="project in experience.projects" :key="project.project_id" class="mt-2">
-          <dd :class="['timeline-item clearfix relative mb-4 ml-4', positionClass]">
-            <div class="circ absolute w-3 h-3 rounded-full bg-brand-green border-2 border-white z-10 -left-1.5 top-2"></div>
-            <div class="time text-xs text-gray-500 mb-1 ml-4">{{ project.start_time }}</div>
-            <div class="timeline-column ml-4">
-              <div class="timeline-column-body">
-                <h4 class="timeline-column-heading font-bold text-sm mb-2">
-                  {{ t.project }} {{ project.project_id }} {{ project.project_name }}
-                </h4>
-
-                <div class="project-toggle" @click="toggleProject(project.project_id)" :class="{ 'project-active': expandedProjects[project.project_id] }">
-                  {{ expandedProjects[project.project_id] ? t.hide : t.show }}
-                </div>
-
-                <div v-show="expandedProjects[project.project_id]" class="project-content transition-all duration-500">
-                  <ul class="space-y-1 mt-2">
-                    <li>{{ t.time }}{{ t.colon }}{{ project.start_time }} - {{ project.end_time }}</li>
-                    <li v-for="(kv, idx) in project.kv" :key="idx">
-                      {{ kv.name }}{{ t.colon }}<span v-html="formatValue(kv.value)"></span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </dd>
-        </div>
       </div>
     </div>
-  </dd>
+  </div>
 </template>
 
 <script setup>
@@ -61,13 +79,10 @@ const props = defineProps({
   total: { type: Number, required: true },
 })
 
-const { t } = useLocale()
+const { t, currentLocale } = useLocale()
+const isZh = computed(() => currentLocale.value === 'zh')
 
 const expandedProjects = ref({})
-
-const positionClass = computed(() =>
-  props.index % 2 === 0 ? 'pos-left' : 'pos-right'
-)
 
 function toggleProject(id) {
   expandedProjects.value[id] = !expandedProjects.value[id]
@@ -75,14 +90,13 @@ function toggleProject(id) {
 
 function formatValue(value) {
   if (!value) return ''
-  const httpIndex = value.indexOf('http')
-  if (httpIndex === 0) {
+  if (value.indexOf('http') === 0) {
     const blankIndex = value.indexOf(' ')
     if (blankIndex > 0) {
       const url = value.substring(0, blankIndex)
-      return `<a href="${url}">${url}</a>${value.substring(blankIndex)}`
+      return `<a href="${url}" class="text-[var(--accent)] hover:underline">${url}</a>${value.substring(blankIndex)}`
     }
-    return `<a href="${value}">${value}</a>`
+    return `<a href="${value}" class="text-[var(--accent)] hover:underline">${value}</a>`
   }
   return value
 }

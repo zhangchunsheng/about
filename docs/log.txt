@@ -95,3 +95,22 @@
       32 +*.temp
 
 ● 已更新，补充了 .vscode、交换文件、日志、环境变量、yarn/pnpm lock 等常见忽略项。
+
+● 构建干净通过。页面UI已完全重构，设计变更：
+
+  视觉风格: 暗色编辑风 Portfolio (dark editorial)
+  - 背景: 近黑色 (#0a0a0b) + 微妙噪点纹理
+  - 强调色: 暖铜色 (#d4a574)，像代码编辑器的语法高亮
+  - 字体: Playfair Display (标题) + IBM Plex Mono (技术细节) + DM Sans (正文)
+  - 渐变文字: 名字用铜色→橙色渐变
+
+  组件变更:
+  - Navbar: 毛玻璃效果 + 终端风格标签 > resume
+  - Introduction: 全屏 hero + 终端前缀 ~/resume + 大号渐变名字 + 滚动指示箭头
+  - Technology: 技能徽章网格 + 编号技术卡片，悬停上浮
+  - Work: 居中线时间轴 + 卡片式条目 + 项目折叠
+  - Statement/QR: 简约卡片
+  - BackToTop: 圆形图标按钮
+  - 动画: scroll-triggered 淡入 + 交错延迟
+
+  请刷新 http://localhost:5173/zh 查看效果。

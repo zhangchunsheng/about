@@ -1,37 +1,62 @@
 <template>
-  <section id="work" class="section py-4">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="timeline">
-        <dl class="relative">
-          <template v-if="loading">
-            <div class="text-center py-12 text-gray-500">Loading...</div>
+  <section id="work" class="section-divider py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <p class="font-mono text-xs text-[var(--text-muted)] tracking-widest uppercase mb-3">02 / EXPERIENCE</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold mb-4">
+          {{ isZh ? '工作经历' : 'Work Experience' }}
+        </h2>
+        <div class="w-12 h-[1px] bg-[var(--accent)] mx-auto opacity-40"></div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative">
+        <div class="timeline-line"></div>
+
+        <template v-if="loading">
+          <div class="flex justify-center py-20">
+            <div class="loading-spinner"></div>
+          </div>
+        </template>
+        <template v-else-if="error">
+          <div class="text-center py-20 text-[var(--text-muted)] font-mono text-sm">
+            {{ isZh ? '加载失败' : 'Failed to load' }}
+          </div>
+        </template>
+        <template v-else>
+          <template v-for="(items, key) in orderedGroups" :key="key">
+            <!-- Tag -->
+            <div class="relative mb-12 animate-on-scroll">
+              <div class="timeline-dot" style="top: 0;"></div>
+              <div class="text-center">
+                <span class="timeline-tag">{{ getTag(key) }}</span>
+              </div>
+            </div>
+
+            <!-- Items -->
+            <TimelineItem
+              v-for="(exp, idx) in items"
+              :key="`${key}-${idx}`"
+              :experience="exp"
+              :index="idx"
+              :total="items.length"
+            />
           </template>
-          <template v-else-if="error">
-            <div class="text-center py-12 text-red-500">Failed to load work experience.</div>
-          </template>
-          <template v-else>
-            <template v-for="(items, key) in orderedGroups" :key="key">
-              <dt class="timeline-tag font-bold text-lg mb-4 text-[#333]">{{ getTag(key) }}</dt>
-              <TimelineItem
-                v-for="(exp, idx) in items"
-                :key="`${key}-${idx}`"
-                :experience="exp"
-                :index="idx"
-                :total="items.length"
-              />
-            </template>
-          </template>
-        </dl>
+        </template>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { computed, watch } from 'vue'
+import { computed } from 'vue'
+import { useLocale } from '../composables/useLocale'
 import { useWorkExperience } from '../composables/useWorkExperience'
 import TimelineItem from './TimelineItem.vue'
 
+const { t, currentLocale } = useLocale()
+const isZh = computed(() => currentLocale.value === 'zh')
 const { grouped, loading, error } = useWorkExperience()
 
 const orderedGroups = computed(() => {
@@ -45,7 +70,7 @@ const orderedGroups = computed(() => {
 
 function getTag(key) {
   const parts = key.split('_')
-  parts.shift() // remove order number
+  parts.shift()
   return parts.join('_')
 }
 </script>
