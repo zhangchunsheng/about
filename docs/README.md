@@ -31,6 +31,7 @@ class为timeline-tag的span标签需要增加padding-top
 timeline使用work_experience_id倒序排列，理论上work_experiences数组应从后往前循环
 timeline使用work_experiences数组从后往前循环，数组中最后一个元素为最新的工作经历
 编写github action，自动部署项目到github pages
+更新claude.md和readme.md
 ```
 
 ```shell
