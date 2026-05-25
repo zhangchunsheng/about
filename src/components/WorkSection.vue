@@ -67,7 +67,7 @@ const isZh = computed(() => currentLocale.value === 'zh')
 const { grouped, loading, error } = useWorkExperience()
 
 const orderedGroups = computed(() => {
-  const keys = Object.keys(grouped.value).sort()
+  const keys = Object.keys(grouped.value)
   const result = {}
   for (const key of keys) {
     result[key] = grouped.value[key]
@@ -77,7 +77,7 @@ const orderedGroups = computed(() => {
 
 // Count items before a given key
 function countBeforeKey(targetKey) {
-  const keys = Object.keys(grouped.value).sort()
+  const keys = Object.keys(grouped.value)
   let count = 0
   for (const key of keys) {
     if (key === targetKey) break
