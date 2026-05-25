@@ -32,13 +32,13 @@ import { useLocale } from '../composables/useLocale'
 
 const props = defineProps({
   project: { type: Object, required: true },
-  parentIndex: { type: Number, default: 0 },
+  index: { type: Number, default: 0 },
 })
 
 const { t } = useLocale()
 
 const positionClass = computed(() => {
-  return props.parentIndex % 2 === 0 ? 'timeline-item-left' : 'timeline-item-right'
+  return props.index % 2 === 0 ? 'timeline-item-left' : 'timeline-item-right'
 })
 
 function formatValue(value) {

@@ -127,3 +127,18 @@
   - 项目卡片跟随父级经验条目显示在时间轴同侧
 
   热更新已生效，刷新即可看到效果。
+
+● Dev server is running. The fix is complete.
+
+  What changed:
+
+  1. WorkSection.vue — Flattened the rendering so ProjectItem components are rendered as siblings of TimelineItem, not
+  nested inside. Added getItemIndex() and getProjectIndex() functions that calculate a sequential index across all
+  experiences and projects within each tag group.
+  2. TimelineItem.vue — Removed the nested <ProjectItem> loop and the ProjectItem import. Now only renders the company
+  experience card.
+  3. ProjectItem.vue — Changed from parentIndex prop to index prop, using it directly for left/right alternating
+  positioning.
+
+  Now each item (company or project) gets its own left/right padding class at the same DOM level, eliminating the
+  compounded padding that caused the width issue.

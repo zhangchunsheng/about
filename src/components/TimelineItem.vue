@@ -39,16 +39,10 @@
       </ul>
     </div>
 
-    <!-- Project Cards -->
-    <template v-for="project in experience.projects" :key="project.project_id">
-      <ProjectItem :project="project" :parent-index="index" />
-    </template>
   </div>
 </template>
 
 <script setup>
-import ProjectItem from './ProjectItem.vue'
-
 const props = defineProps({
   experience: { type: Object, required: true },
   index: { type: Number, required: true },

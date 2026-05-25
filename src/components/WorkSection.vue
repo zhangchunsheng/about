@@ -35,13 +35,19 @@
             </div>
 
             <!-- Items -->
-            <TimelineItem
-              v-for="(exp, idx) in items"
-              :key="`${key}-${idx}`"
-              :experience="exp"
-              :index="idx"
-              :total="items.length"
-            />
+            <template v-for="(exp, idx) in items" :key="`${key}-${idx}`">
+              <TimelineItem
+                :experience="exp"
+                :index="getItemIndex(idx, key)"
+                :total="items.length"
+              />
+              <template v-for="(project, pIdx) in exp.projects" :key="`${key}-${idx}-${pIdx}`">
+                <ProjectItem
+                  :project="project"
+                  :index="getProjectIndex(idx, pIdx, items.length, key)"
+                />
+              </template>
+            </template>
           </template>
         </template>
       </div>
@@ -54,6 +60,7 @@ import { computed } from 'vue'
 import { useLocale } from '../composables/useLocale'
 import { useWorkExperience } from '../composables/useWorkExperience'
 import TimelineItem from './TimelineItem.vue'
+import ProjectItem from './ProjectItem.vue'
 
 const { t, currentLocale } = useLocale()
 const isZh = computed(() => currentLocale.value === 'zh')
@@ -67,6 +74,28 @@ const orderedGroups = computed(() => {
   }
   return result
 })
+
+// Count items before a given key
+function countBeforeKey(targetKey) {
+  const keys = Object.keys(grouped.value).sort()
+  let count = 0
+  for (const key of keys) {
+    if (key === targetKey) break
+    const items = grouped.value[key]
+    for (const exp of items) {
+      count += 1 + (exp.projects?.length || 0)
+    }
+  }
+  return count
+}
+
+function getItemIndex(idx, key) {
+  return countBeforeKey(key) + idx
+}
+
+function getProjectIndex(idx, pIdx, expLength, key) {
+  return countBeforeKey(key) + idx + 1 + pIdx
+}
 
 function getTag(key) {
   const parts = key.split('_')
