@@ -171,3 +171,6 @@
   WorkSection.vue — timeline-tag 距 dot 增加 mt-10 间距。
 
 ● Done. .timeline-tag 增加了 padding-top: 10px。
+
+● Done. groupByTag 将 work_experiences 数组先反转，再按 tag 分组，tag 顺序也反转。这样最新的数据（work_experience_id
+  最大）最先渲染。
