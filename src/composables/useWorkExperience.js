@@ -15,18 +15,20 @@ export function useWorkExperience() {
       loading.value = true
       error.value = null
       const endpoint = currentLocale.value === 'en'
-        ? `${API_BASE}/workExperienceEn`
-        : `${API_BASE}/workExperience`
+        ? `${API_BASE}/workExperienceEn?jsonp=0`
+        : `${API_BASE}/workExperience?jsonp=0`
 
       const res = await fetch(endpoint)
       const json = await res.json()
 
+      console.log('Fetched work experience data:', json)
       if (json.code === 200) {
         experiences.value = json.result.work_experiences
         grouped.value = groupByTag(experiences.value)
       }
     } catch (e) {
       error.value = e
+      console.error('Failed to fetch work experience:', e)
     } finally {
       loading.value = false
     }
